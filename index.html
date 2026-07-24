@@ -10,7 +10,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LegalService","name":"Abogado Laboralista Córdoba","url":"https://abogadolaboralista.com/","telephone":"+54 9 351 552-2209","email":"info@eubecentini.com","address":{"@type":"PostalAddress","streetAddress":"San Martín 338, Piso 2º","addressLocality":"Córdoba","addressCountry":"AR"},"areaServed":"Córdoba, Argentina","knowsAbout":["Derecho laboral","Despidos","Indemnizaciones","Accidentes de trabajo","ART","Trabajo no registrado"]}
 </script>
-<script src="./ds-base.js"></script>
+<link rel="stylesheet" href="ds/styles.css" />
 <style>
 /* Template scaffolding — page layout and web-scale sizing only; every color,
    font, radius and shadow comes from ../../styles.css. The voice is the
@@ -50,7 +50,7 @@ body { margin: 0; text-wrap: pretty; }
 /* the component demo pads the masthead with its own spacing; on the page the
    masthead's contents take the page gutter and sit on the wrap's text axis
    (padding-only — full-width paint such as a masthead rule is untouched) */
-.nav { padding-inline: max(var(--edge), calc((100% - 1200px) / 2 + var(--edge))); }
+.nav { padding-block: 16px; padding-inline: max(var(--edge), calc((100% - 1200px) / 2 + var(--edge))); }
 .nav a { white-space: nowrap; }
 .nav a[aria-current='location'] { color: var(--color-accent); } /* in-page anchor, not
    a page link — 'location' is the truthful value; carry the component's active ink */
@@ -112,13 +112,13 @@ body { margin: 0; text-wrap: pretty; }
 
 /* — feature rows (the deck's ruled-toc grammar: 2px rules ON the seams,
    red square marks hanging at the numbers — drawn structure, no cards) — */
-.features { padding: calc(3 * var(--leading)) 0 calc(2.5 * var(--leading)); }
-.feature { display: grid; grid-template-columns: minmax(64px, 160px) minmax(0, 420px) minmax(0, 1fr);
-  gap: var(--leading) clamp(24px, 4vw, 72px); align-items: baseline;
-  padding: calc(1.5 * var(--leading)) 0; }
+.features { padding: calc(2 * var(--leading)) 0 calc(1.5 * var(--leading)); }
+.feature { display: grid; grid-template-columns: minmax(56px, 90px) minmax(0, 380px) minmax(0, 1fr);
+  gap: var(--half) clamp(24px, 4vw, 64px); align-items: baseline;
+  padding: var(--leading) 0; }
 .feature + .feature { border-top: 2px solid var(--color-divider); } /* the ruled seam — solid, the system's weight */
 .f-head { display: flex; flex-direction: column; gap: var(--half); }
-.f-ico { width: 46px; height: 46px; color: var(--color-accent); stroke-width: 1.75; }
+.f-ico { width: 38px; height: 38px; color: var(--color-accent); stroke-width: 1.75; }
 .f-num { position: relative; font-family: var(--font-heading); font-weight: var(--font-heading-weight);
   font-size: 15px; line-height: var(--leading); color: var(--color-text);
   font-feature-settings: "tnum" 1; margin: 0; text-box: trim-both cap alphabetic; }
@@ -336,6 +336,44 @@ footer { padding: calc(2 * var(--leading)) 0; font-size: 13px; line-height: var(
 .nav .btn { padding: 11px 18px; font-size: 14px; }
 .nav-brand img { height: 46px; display: block; }
 
+/* — SEO prose under the services — */
+.seo-note { border-top: 2px solid var(--color-divider); padding-top: var(--leading); margin-top: var(--leading); }
+.seo-note p { font-size: 14.5px; line-height: 22px; max-width: 78ch; margin: 0 0 var(--half);
+  color: color-mix(in srgb, var(--color-text) 68%, transparent); }
+
+/* — Google reviews slider — */
+.reviews { padding: calc(2.5 * var(--leading)) 0; }
+.rev-track { display: flex; gap: var(--leading); overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; margin-top: var(--leading); }
+.rev-track::-webkit-scrollbar { display: none; }
+.rev-card { flex: 0 0 min(340px, 85%); scroll-snap-align: start; background: #fff;
+  border: 1px solid var(--color-neutral-300); border-radius: 10px; padding: var(--leading);
+  box-shadow: 0 2px 10px rgba(32,30,29,.06); }
+.rev-stars { color: #fbbc04; font-size: 16px; letter-spacing: 2px; margin: 0 0 var(--half); }
+.rev-text { font-size: 14.5px; line-height: 22px; margin: 0; color: color-mix(in srgb, var(--color-text) 85%, transparent); }
+.rev-name { font-family: var(--font-heading); font-weight: 700; font-size: 14px; margin: var(--half) 0 0; }
+.rev-src { font-size: 12px; color: color-mix(in srgb, var(--color-text) 60%, transparent); margin: 2px 0 0; }
+.rev-nav { display: flex; gap: 8px; margin-top: var(--leading); }
+.rev-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--color-neutral-400);
+  background: #fff; cursor: pointer; font-size: 17px; line-height: 1; display: inline-flex;
+  align-items: center; justify-content: center; color: var(--color-text); }
+.rev-btn:hover { background: var(--color-neutral-200); }
+
+/* — form restyle — */
+.c-form .field label { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 6px; }
+.c-form .input { width: 100%; box-sizing: border-box; padding: 12px 14px; font: inherit; font-size: 15px;
+  color: var(--color-text); background: #fff; border: 1.5px solid var(--color-neutral-400); border-radius: 8px; }
+.c-form .input:focus { outline: none; border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent); }
+
+/* — floating WhatsApp — */
+.wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 999; width: 58px; height: 58px;
+  border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center;
+  justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.28); transition: background .15s, transform .15s; }
+.wa-float svg { width: 32px; height: 32px; }
+.wa-float:hover { background: #1da851; transform: scale(1.06); color: #fff; }
+
 /* Review aid: the 28px rhythm drawn as hairlines — debug chrome, toggled by
    ?baselines or the B key, never part of the look. */
 body[data-baselines] { position: relative; }
@@ -412,6 +450,10 @@ body[data-baselines]::after {
       <h2 class="f-title">Acoso y diferencias salariales</h2>
       <p class="f-copy">Mobbing, sanciones injustificadas, cambios arbitrarios de horario o tareas, pagos por fuera de convenio: documentamos la situación y armamos el reclamo antes de que el conflicto escale. Un abogado laboral en Córdoba te acompaña desde la primera intimación.</p>
     </div>
+    <div class="seo-note">
+      <p>Como estudio de abogados laboralistas en Córdoba atendemos también reclamos por despido indirecto, falta de pago de salarios y aguinaldo, horas extras no abonadas, liquidación final incompleta, certificados de trabajo (art. 80 LCT), fraude laboral por monotributo, tercerización e interposición de personas, y renuncias forzadas bajo presión del empleador.</p>
+      <p>Recibimos consultas de trabajadores de la ciudad de Córdoba y de toda la provincia — Villa Carlos Paz, Río Cuarto, Villa María, Alta Gracia, Jesús María — de todos los rubros: comercio, gastronomía, construcción, industria, transporte, salud, seguridad y trabajo en casas particulares.</p>
+    </div>
   </section>
 
   <hr class="rule2" />
@@ -455,6 +497,41 @@ body[data-baselines]::after {
 </section>
 
 <div class="wrap">
+
+  <section class="reviews" id="opiniones">
+    <span class="kicker">Nuestros clientes</span>
+    <h2 class="split-title">Qué dicen de nosotros</h2>
+    <div class="rev-track" id="rev-track">
+      <div class="rev-card">
+        <p class="rev-stars">★★★★★</p>
+        <p class="rev-text">“Excelente atención. Me explicaron todo con claridad desde la primera consulta y llevaron mi reclamo por despido hasta cobrar. Muy recomendables.”</p>
+        <p class="rev-name">Verónica S.</p>
+        <p class="rev-src">Reseña de Google</p>
+      </div>
+      <div class="rev-card">
+        <p class="rev-stars">★★★★★</p>
+        <p class="rev-text">“Muy profesionales. Respondieron rápido por WhatsApp y me acompañaron en todo el trámite con la ART.”</p>
+        <p class="rev-name">Gastón M.</p>
+        <p class="rev-src">Reseña de Google</p>
+      </div>
+      <div class="rev-card">
+        <p class="rev-stars">★★★★★</p>
+        <p class="rev-text">“Serios y transparentes con los honorarios. Recuperé lo que me correspondía por trabajo en negro.”</p>
+        <p class="rev-name">Carolina R.</p>
+        <p class="rev-src">Reseña de Google</p>
+      </div>
+      <div class="rev-card">
+        <p class="rev-stars">★★★★★</p>
+        <p class="rev-text">“La mejor experiencia con un estudio jurídico en Córdoba. Siempre atentos y claros en cada paso.”</p>
+        <p class="rev-name">Jorge L.</p>
+        <p class="rev-src">Reseña de Google</p>
+      </div>
+    </div>
+    <div class="rev-nav">
+      <button class="rev-btn" type="button" data-dir="-1" aria-label="Anterior">←</button>
+      <button class="rev-btn" type="button" data-dir="1" aria-label="Siguiente">→</button>
+    </div>
+  </section>
 
   <section class="faq" id="preguntas">
     <span class="kicker">Preguntas frecuentes</span>
@@ -538,10 +615,11 @@ body[data-baselines]::after {
         </ul>
       </div>
     </div>
-    <p class="footer-note">abogadolaboralista.com — Abogado laboral en Córdoba, Argentina.<br /><span style="font-size: 11.5px; opacity: .75;">Ab. Juan Facundo Centini, M.P. — · Ab. Alfredo L. Eube Madussi, M.P. —</span></p>
+    <p class="footer-note">abogadolaboralista.com — Abogado laboral en Córdoba, Argentina.<br /><span style="font-size: 11.5px; opacity: .75;">Ab. Juan Facundo Centini, M.P. 1-40263 · Ab. Alfredo L. Eube Madussi, M.P. 1-39876</span></p>
   </footer>
 </div>
 </div>
+<a class="wa-float" href="https://wa.me/5493515522209" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.2 1.4Z"/></svg></a>
 <script src="image-slot.js"></script>
 <script>
 // Contact form → WhatsApp with the message prefilled
@@ -552,6 +630,24 @@ document.getElementById('form-wa').addEventListener('submit', (e) => {
   const txt = encodeURIComponent(`Hola, soy ${nombre}. Consulta laboral: ${caso}`);
   window.open(`https://wa.me/5493515522209?text=${txt}`, '_blank');
 });
+// Reviews slider: arrows + auto-advance
+(() => {
+  const track = document.getElementById('rev-track');
+  if (!track) return;
+  const step = () => (track.querySelector('.rev-card')?.offsetWidth || 320) + 28;
+  document.querySelectorAll('.rev-btn').forEach((b) => b.addEventListener('click', () => {
+    track.scrollBy({ left: step() * Number(b.dataset.dir), behavior: 'smooth' });
+  }));
+  let paused = false;
+  track.addEventListener('pointerenter', () => { paused = true; });
+  track.addEventListener('pointerleave', () => { paused = false; });
+  setInterval(() => {
+    if (paused) return;
+    const max = track.scrollWidth - track.clientWidth - 4;
+    if (track.scrollLeft >= max) track.scrollTo({ left: 0, behavior: 'smooth' });
+    else track.scrollBy({ left: step(), behavior: 'smooth' });
+  }, 6000);
+})();
 </script>
 <script>
 // Review aid: baseline-grid overlay — add ?baselines to the URL, or press B to toggle.
